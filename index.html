@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Progressly</title>
+    <meta
+      name="description"
+      content="Progressly is a simple weekly progress tracker. Set goals, check off tasks, and spin the wheel when you can’t decide what to do next."
+    />
+    <meta
+      name="theme-color"
+      content="#f5f8fd"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#0c1426"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Progressly" />
+    <meta
+      property="og:description"
+      content="Progressly is a simple weekly progress tracker. Set goals, check off tasks, and spin the wheel when you can’t decide what to do next."
+    />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <noscript
+      ><p style="padding: 24px">
+        Progressly needs JavaScript to run. Please enable it in your browser.
+      </p></noscript
+    >
+    <div class="app" id="top">
+      <aside class="side">
+        <div class="brand"><span data-ic="leaf"></span>Progressly</div>
+        <nav aria-label="Main">
+          <button class="nv" data-a="nh" aria-current="page">
+            <span data-ic="home"></span>Home</button
+          ><button class="nv" data-a="ng">
+            <span data-ic="target"></span>Goals
+          </button>
+        </nav>
+        <div class="tag">
+          <span data-ic="leaf"></span>Better habits.<br />A bigger you.
+        </div>
+      </aside>
+      <header class="head">
+        <div>
+          <h1 id="hi"></h1>
+          <p class="sub">Small steps today, big results tomorrow.</p>
+        </div>
+      </header>
+      <div class="tools">
+        <button
+          class="tg"
+          id="theme"
+          role="switch"
+          aria-checked="false"
+          aria-label="Dark mode"
+        >
+          <span class="a" data-ic="sun"></span
+          ><span class="b" data-ic="moon"></span></button
+        ><button
+          class="av"
+          id="av"
+          title="Change your name"
+          aria-label="Change your name"
+        ></button>
+      </div>
+      <main class="main">
+        <section class="card prog" aria-label="Weekly progress">
+          <div class="big">
+            <p>This Week’s Progress</p>
+            <h2 id="pc"></h2>
+            <div id="pb"></div>
+          </div>
+          <div class="ring" id="ring"></div>
+        </section>
+        <section>
+          <div class="gt" id="goals">
+            <h2>My goals</h2>
+            <div class="gbt">
+              <button class="btn" data-a="ag">
+                <span data-ic="plus"></span>Add goal
+              </button>
+            </div>
+          </div>
+          <div class="gl" id="gl"></div>
+        </section>
+      </main>
+      <aside class="rail">
+        <section class="card pan" aria-label="Spin the wheel">
+          <div class="ph">
+            <span class="sp" data-ic="spark"></span>
+            <div>
+              <h2>Spin the Wheel</h2>
+              <small
+                >Add your tasks, choose how long to spin, and let the wheel
+                decide!</small
+              >
+            </div>
+          </div>
+          <fieldset id="ctl">
+            <div class="step">
+              <span class="n">1</span>
+              <div>
+                <h3>Add your tasks</h3>
+                <small>Enter the tasks you want to include in the wheel.</small>
+              </div>
+            </div>
+            <form class="addt" id="wf">
+              <input
+                class="in"
+                id="wi"
+                maxlength="40"
+                placeholder="e.g. Study SQL"
+                aria-label="New wheel task"
+              /><button class="btn"><span data-ic="plus"></span>Add</button>
+            </form>
+            <p class="err" id="we" role="alert"></p>
+            <ul class="opts" id="opts"></ul>
+            <div class="step">
+              <span class="n">2</span>
+              <div>
+                <h3>Set the spin duration</h3>
+                <small
+                  >Enter how many seconds the wheel should spin before it
+                  stops.</small
+                >
+              </div>
+            </div>
+            <div class="dur">
+              <input
+                class="in"
+                id="dur"
+                type="number"
+                inputmode="decimal"
+                min="1"
+                max="60"
+                step="0.5"
+                aria-label="Spin duration in seconds"
+              /><span>seconds</span>
+            </div>
+            <p class="err" id="dure" role="alert"></p>
+            <div class="step">
+              <span class="n">3</span>
+              <div>
+                <h3>Spin the wheel</h3>
+                <small>Ready? Click the button and let fate decide!</small>
+              </div>
+            </div>
+            <button class="btn" id="spin" data-a="spin"></button>
+            <p class="s" id="hint"></p>
+          </fieldset>
+          <div class="ww">
+            <i class="ptr"></i
+            ><svg
+              id="wheel"
+              viewBox="-100 -100 200 200"
+              role="img"
+              aria-label="Wheel showing your task options"
+            ></svg>
+          </div>
+          <div class="res" id="res" aria-live="polite"></div>
+          <div class="tip">
+            <span data-ic="bulb"></span
+            ><span
+              >Tip: Add more tasks or adjust the spin time if you feel like
+              trying again!</span
+            >
+          </div>
+        </section>
+      </aside>
+    </div>
+    <dialog id="dlg" aria-labelledby="dt">
+      <form method="dialog" id="df">
+        <h3 id="dt"></h3>
+        <p id="dm"></p>
+        <input class="in" id="di" maxlength="80" aria-labelledby="dt" />
+        <p class="err" id="de"></p>
+        <div class="row">
+          <button type="button" class="ghost" id="dc">Cancel</button
+          ><button class="btn" id="dok" value="ok">Save</button>
+        </div>
+      </form>
+    </dialog>
+    <script src="js/state.js"></script>
+    <script src="js/week.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/dialog.js"></script>
+    <script src="js/goals.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/wheel.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
